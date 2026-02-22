@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payments</title>
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body class="orders">
+  <nav class="navbar navbar-expand-lg custom-nav">
+    <div class="container-fluid justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="orders.html">Porosite</a></li>
+        <li class="nav-item"><a class="nav-link" href="tables.html">Tavolinat</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menuja</a></li>
+        <li class="nav-item"><a class="nav-home" href="payments.html">Pagesat</a></li>
+        <li class="nav-item"><a class="nav-link" href="kamariaret.html">Kamarieret</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-zone payments-zone">
+    <section class="payments-header">
+      <div>
+        <h1 class="main-title">Payments Control</h1>
+        <p class="main-description">Menaxho pagesat, borxhet dhe transaksionet ne kohe reale.</p>
+      </div>
+      <div class="payments-tools">
+        <input id="paymentSearch" type="text" placeholder="Kerko #Order, #Pay, kamarier..." />
+        <select id="paymentMethodFilter">
+          <option value="all">Te gjitha metodat</option>
+          <option value="cash">Cash</option>
+          <option value="card">Card</option>
+          <option value="bank">Bank</option>
+        </select>
+        <select id="paymentDateFilter">
+          <option value="today">Sot</option>
+          <option value="last7">7 ditet e fundit</option>
+          <option value="all">Te gjitha</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="payments-kpis">
+      <article class="kpi-card">
+        <span>Revenue Today</span>
+        <strong id="kpiToday">0.00 EUR</strong>
+      </article>
+      <article class="kpi-card">
+        <span>Total Revenue</span>
+        <strong id="kpiTotal">0.00 EUR</strong>
+      </article>
+      <article class="kpi-card">
+        <span>Outstanding</span>
+        <strong id="kpiOutstanding">0.00 EUR</strong>
+      </article>
+      <article class="kpi-card">
+        <span>Transactions</span>
+        <strong id="kpiCount">0</strong>
+      </article>
+    </section>
+
+    <section class="payments-layout">
+      <article class="payments-panel">
+        <h2>Outstanding Orders</h2>
+        <div id="outstandingList" class="payments-list"></div>
+      </article>
+
+      <article class="payments-panel">
+        <h2>Register Payment</h2>
+        <form id="paymentForm" class="payment-form">
+          <label for="paymentOrderSelect">Order</label>
+          <select id="paymentOrderSelect" required></select>
+
+          <div class="payment-form-row">
+            <div>
+              <label for="paymentMethod">Method</label>
+              <select id="paymentMethod" required>
+                <option value="cash">Cash</option>
+                <option value="card">Card</option>
+                <option value="bank">Bank</option>
+              </select>
+            </div>
+            <div>
+              <label for="paymentAmount">Amount</label>
+              <input id="paymentAmount" type="number" min="0.01" step="0.01" required />
+            </div>
+          </div>
+
+          <div class="payment-due" id="paymentDue">Due: 0.00 EUR</div>
+
+          <label for="paymentNote">Note</label>
+          <input id="paymentNote" type="text" placeholder="Opsionale" />
+
+          <div class="menu-actions">
+            <button type="submit" class="btn-primary">Confirm Payment</button>
+            <button type="button" class="btn-ghost" id="resetPaymentBtn">Reset</button>
+          </div>
+        </form>
+
+        <div class="payment-method-breakdown" id="methodBreakdown"></div>
+      </article>
+    </section>
+
+    <section class="payments-panel">
+      <h2>Transaction History</h2>
+      <div id="paymentHistory" class="payments-history"></div>
+    </section>
+  </main>
+
+  <div id="paymentToast" class="toast hidden"></div>
+
+  <script src="payments.js" defer></script>
+</body>
+</html>

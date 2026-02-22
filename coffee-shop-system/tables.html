@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tables</title>
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body class="orders">
+  <nav class="navbar navbar-expand-lg custom-nav">
+    <div class="container-fluid justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="orders.html">Porosite</a></li>
+        <li class="nav-item"><a class="nav-home" href="tables.html">Tavolinat</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menuja</a></li>
+        <li class="nav-item"><a class="nav-link" href="payments.html">Pagesat</a></li>
+        <li class="nav-item"><a class="nav-link" href="kamariaret.html">Kamarieret</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-zone tables-zone">
+    <section class="tables-header">
+      <div>
+        <h1 class="main-title">Tables Control</h1>
+        <p class="main-description">Monitoro statusin e tavolinave dhe lidhu direkt me porosite.</p>
+      </div>
+      <div class="tables-tools">
+        <input id="tableSearch" type="text" placeholder="Kerko tavoline, zone..." />
+        <select id="tableStatusFilter">
+          <option value="all">Te gjitha</option>
+          <option value="occupied">Occupied</option>
+          <option value="reserved">Reserved</option>
+          <option value="cleaning">Cleaning</option>
+          <option value="free">Free</option>
+        </select>
+        <button id="refreshTablesBtn" class="btn-ghost" type="button">Refresh</button>
+      </div>
+    </section>
+
+    <section class="tables-kpis">
+      <article class="kpi-card"><span>Total</span><strong id="kpiTablesTotal">0</strong></article>
+      <article class="kpi-card"><span>Occupied</span><strong id="kpiTablesOccupied">0</strong></article>
+      <article class="kpi-card"><span>Reserved</span><strong id="kpiTablesReserved">0</strong></article>
+      <article class="kpi-card"><span>Free</span><strong id="kpiTablesFree">0</strong></article>
+      <article class="kpi-card"><span>Cleaning</span><strong id="kpiTablesCleaning">0</strong></article>
+      <article class="kpi-card"><span>Utilization</span><strong id="kpiTablesUtil">0%</strong></article>
+    </section>
+
+    <section class="tables-layout">
+      <article class="tables-panel">
+        <h2>Floor</h2>
+        <div id="tablesGrid" class="tables-grid"></div>
+      </article>
+
+      <aside class="tables-panel tables-detail" id="tableDetailPanel">
+        <div id="detailEmpty">Zgjidh nje tavoline per detaje.</div>
+        <div id="detailContent" class="hidden">
+          <div class="detail-top">
+            <h2 id="detailTitle">Table</h2>
+            <span id="detailStatusBadge" class="table-badge">Free</span>
+          </div>
+
+          <div class="detail-meta" id="detailMeta"></div>
+
+          <div class="detail-controls">
+            <label for="detailWaiterSelect">Reservation waiter</label>
+            <select id="detailWaiterSelect"></select>
+          </div>
+
+          <div class="detail-actions">
+            <button id="detailReserveBtn" class="btn-ghost" type="button">Toggle Reserve</button>
+            <button id="detailCleanBtn" class="btn-ghost" type="button">Toggle Cleaning</button>
+            <button id="detailResetBtn" class="btn-ghost" type="button">Reset</button>
+            <button id="detailCreateOrderBtn" class="btn-primary" type="button">Create Order</button>
+          </div>
+
+          <h3>Active Orders</h3>
+          <div id="detailActiveOrders" class="detail-list"></div>
+
+          <h3>Latest Payments</h3>
+          <div id="detailPayments" class="detail-list"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="tablesToast" class="toast hidden"></div>
+
+  <script src="tables.js" defer></script>
+</body>
+</html>

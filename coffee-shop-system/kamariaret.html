@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kamarieret</title>
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body class="orders">
+  <nav class="navbar navbar-expand-lg custom-nav">
+    <div class="container-fluid justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="orders.html">Porosite</a></li>
+        <li class="nav-item"><a class="nav-link" href="tables.html">Tavolinat</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html">Menuja</a></li>
+        <li class="nav-item"><a class="nav-link" href="payments.html">Pagesat</a></li>
+        <li class="nav-item"><a class="nav-home" href="kamariaret.html">Kamarieret</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-zone waiters-zone">
+    <section class="waiters-header">
+      <div>
+        <h1 class="main-title">Kamarieret</h1>
+        <p class="main-description">Regjistro stafin dhe monitoro performance ne porosi, pagesa dhe rezervime.</p>
+      </div>
+      <div class="waiters-tools">
+        <input id="waiterSearch" type="text" placeholder="Kerko kamarier..." />
+        <select id="waiterDateFilter">
+          <option value="today">Sot</option>
+          <option value="last7">7 ditet e fundit</option>
+          <option value="all">Te gjitha</option>
+        </select>
+        <select id="waiterStatusFilter">
+          <option value="all">Te gjithe</option>
+          <option value="active">Aktiv</option>
+          <option value="inactive">Jo aktiv</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="waiters-kpis">
+      <article class="kpi-card"><span>Total waiters</span><strong id="kpiWaitersTotal">0</strong></article>
+      <article class="kpi-card"><span>Active waiters</span><strong id="kpiWaitersActive">0</strong></article>
+      <article class="kpi-card"><span>Revenue period</span><strong id="kpiWaitersRevenue">0.00 EUR</strong></article>
+      <article class="kpi-card"><span>Reservations period</span><strong id="kpiWaitersRes">0</strong></article>
+    </section>
+
+    <section class="waiters-layout">
+      <article class="waiters-panel">
+        <h2 id="waiterFormTitle">Regjistro kamarier</h2>
+        <form id="waiterForm" class="waiter-form">
+          <label for="waiterName">Emri</label>
+          <input id="waiterName" type="text" required placeholder="p.sh. Ardi" />
+
+          <label for="waiterShift">Nderrimi</label>
+          <select id="waiterShift">
+            <option value="Morning">Morning</option>
+            <option value="Evening">Evening</option>
+            <option value="Night">Night</option>
+          </select>
+
+          <label for="waiterPhone">Nr. telefoni</label>
+          <input id="waiterPhone" type="text" placeholder="p.sh. 049000000" />
+
+          <label class="menu-check">
+            <input id="waiterActive" type="checkbox" checked />
+            Aktiv
+          </label>
+
+          <div class="menu-actions">
+            <button type="submit" class="btn-primary">Ruaj</button>
+            <button type="button" class="btn-ghost" id="waiterCancelBtn">Anulo</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="waiters-panel">
+        <h2>Lista dhe statistika</h2>
+        <div id="waitersList" class="waiters-list"></div>
+      </article>
+    </section>
+  </main>
+
+  <div id="waitersToast" class="toast hidden"></div>
+
+  <script src="kamariaret.js" defer></script>
+</body>
+</html>

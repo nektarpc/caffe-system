@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Orders</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body class="orders">
   <nav class="navbar navbar-expand-lg custom-nav">
     <div class="container-fluid justify-content-center">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="orders.html">Porositë</a></li>
+        <li class="nav-item"><a class="nav-link" href="orders.html">Porosite</a></li>
         <li class="nav-item"><a class="nav-link" href="tables.html">Tavolinat</a></li>
         <li class="nav-item"><a class="nav-link" href="menu.html">Menuja</a></li>
         <li class="nav-item"><a class="nav-link" href="payments.html">Pagesat</a></li>
-        <li class="nav-item"><a class="nav-home" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="kamariaret.html">Kamarieret</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
       </ul>
     </div>
   </nav>
@@ -22,25 +23,25 @@
   <main class="main-zone">
     <section class="orders-header">
       <div>
-        <h1 class="main-title">Porositë</h1>
-        <p class="main-description">Menaxho porositë aktive dhe historinë.</p>
+        <h1 class="main-title">Porosite</h1>
+        <p class="main-description">Menaxho porosite aktive dhe historine.</p>
       </div>
 
       <div class="orders-toolbar">
-        <input id="searchInput" type="text" placeholder="Kërko porosi (#ID, tavolinë, produkt)..." />
+        <input id="searchInput" type="text" placeholder="Kerko porosi (#ID, tavoline, produkt)..." />
         <select id="filterSelect">
           <option value="active">Aktive</option>
           <option value="history">Histori</option>
-          <option value="all">Të gjitha</option>
+          <option value="all">Te gjitha</option>
         </select>
         <select id="dateFilter">
           <option value="today">Sot</option>
           <option value="yesterday">Dje</option>
-          <option value="last7">7 ditët e fundit</option>
-          <option value="all">Të gjitha</option>
+          <option value="last7">7 ditet e fundit</option>
+          <option value="all">Te gjitha</option>
         </select>
         <select id="waiterFilter">
-          <option value="all">Të gjithë kamarierët</option>
+          <option value="all">Te gjithe kamarieret</option>
         </select>
         <button id="newOrderBtn" class="btn-primary">New Order</button>
       </div>
@@ -48,7 +49,7 @@
 
     <section class="orders-grid">
       <div id="activePanel" class="orders-panel">
-        <h2>Porositë Aktive</h2>
+        <h2>Porosite Aktive</h2>
         <div id="activeOrders" class="orders-list"></div>
       </div>
 
@@ -59,7 +60,6 @@
     </section>
   </main>
 
-  <!-- Modal -->
   <div id="orderModal" class="modal hidden">
     <div class="modal-content">
       <h3 id="modalTitle">Porosi e re</h3>
@@ -71,7 +71,7 @@
         </div>
         <div class="modal-col">
           <label>Kamarieri</label>
-          <input id="waiterInput" type="text" placeholder="p.sh. Ardi" />
+          <select id="waiterInput"></select>
         </div>
         <div class="modal-col">
           <label>Prioritet</label>
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <label>Shënim për klientin</label>
+      <label>Shenim per klientin</label>
       <input id="customerNoteInput" type="text" placeholder="p.sh. Pa sheqer" />
 
       <div class="modal-row">
@@ -92,7 +92,7 @@
           <select id="productSelect"></select>
         </div>
         <div class="modal-col">
-          <label>Çmimi</label>
+          <label>Cmimi</label>
           <input id="priceInput" type="text" readonly />
         </div>
         <div class="modal-col">
@@ -110,10 +110,10 @@
         <div class="modal-col">
           <label>Statusi</label>
           <select id="statusSelect">
-            <option value="pending">Në pritje</option>
-            <option value="in_progress">Në proces</option>
+            <option value="pending">Ne pritje</option>
+            <option value="in_progress">Ne proces</option>
             <option value="ready">Gati</option>
-            <option value="delivered">Dorëzuar</option>
+            <option value="delivered">Dorezuar</option>
           </select>
         </div>
         <div class="modal-col">
@@ -132,18 +132,18 @@
 
       <div class="total-row">
         <span>Subtotal</span>
-        <strong id="subtotalPrice">0€</strong>
+        <strong id="subtotalPrice">0 EUR</strong>
       </div>
       <div class="total-row">
         <span>TVSH (18%)</span>
-        <strong id="vatPrice">0€</strong>
+        <strong id="vatPrice">0 EUR</strong>
       </div>
       <div class="total-row total-final">
         <span>Total</span>
-        <strong id="totalPrice">0€</strong>
+        <strong id="totalPrice">0 EUR</strong>
       </div>
 
-      <label>Shënime</label>
+      <label>Shenime</label>
       <textarea id="notesInput" rows="3" placeholder="Opsionale"></textarea>
 
       <div class="modal-actions">
